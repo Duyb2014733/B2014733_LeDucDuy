@@ -27,7 +27,7 @@ app.use((err, req, res, next) => {
     //  sẽ chuyển về middleware xử lý lỗi này.
     return res.status(error.statusCode || 500).json({
         message: error.message || "Internal Server Error",
-    })
+    });
 });
 
 module.exports = app;
