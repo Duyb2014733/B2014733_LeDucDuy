@@ -3,7 +3,7 @@ const MongoDB = require("../utils/mongodb.util");
 const ApiError = require("../api-error");
 
 exports.create = async (req, res, next) => {
-  if (!req.body?.name) {
+  if (!req.body.name) {
     return next(new ApiError(400, "Name can not be empty"));
   }
 
@@ -104,7 +104,7 @@ exports.deleteAll = async (req, res, next) => {
 exports.findAllFavorite = async (req, res, next) => {
   try {
     const contactService = new ContactService(MongoDB.client);
-    const documents = await contactService.findAllFavorite();
+    const documents = await contactService.findFavorite();
     return res.send(documents);
   } catch (error) {
     return next(
